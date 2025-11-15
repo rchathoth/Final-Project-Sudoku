@@ -6,7 +6,7 @@ https://www.geeksforgeeks.org/program-sudoku-generator/
 
 """
 
-class SudokuGenerator:
+class SudokuGenerator:   
     '''
 	create a sudoku board - initialize class variables and set up the 2D board
 	This should initialize:
@@ -23,6 +23,7 @@ class SudokuGenerator:
 	None
     '''
     def __init__(self, row_length, removed_cells):
+        
         pass
 
     '''
@@ -32,7 +33,7 @@ class SudokuGenerator:
 	Return: list[list]
     '''
     def get_board(self):
-        pass
+        return self.board
 
     '''
 	Displays the board to the console
@@ -159,6 +160,8 @@ class SudokuGenerator:
                     return True
                 self.board[row][col] = 0
         return False
+    
+#####################################################################
 
     '''
     DO NOT CHANGE
