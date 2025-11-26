@@ -33,18 +33,6 @@ class SudokuGenerator:
                 return False
         return True
 
-    '''
-	Determines if num is contained in the 3x3 box specified on the board
-    If num is in the specified box starting at (row_start, col_start), return False.
-    Otherwise, return True
-
-	Parameters:
-	row_start and col_start are the starting indices of the box to check
-	i.e. the box is from (row_start, col_start) to (row_start+2, col_start+2)
-	num is the value we are looking for in the box
-
-	Return: boolean
-    '''
     def valid_in_box(self, row_start, col_start, num):
         for r in range(row_start, row_start + 3):
             for c in range(col_start, col_start + 3):
@@ -52,19 +40,10 @@ class SudokuGenerator:
                     return False
         return True
 
-    
-    '''
-    Determines if it is valid to enter num at (row, col) in the board
-    This is done by checking that num is unused in the appropriate, row, column, and box
-
-	Parameters:
-	row and col are the row index and col index of the cell to check in the board
-	num is the value to test if it is safe to enter in this cell
-
-	Return: boolean
-    '''
     def is_valid(self, row, col, num):
-        pass
+        if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row, col, num):
+            return True
+        return False
 
     '''
     Fills the specified 3x3 box with values
