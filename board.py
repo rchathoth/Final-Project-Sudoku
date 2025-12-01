@@ -26,8 +26,13 @@ class Board():
         pass
     
     def place_number(self, value):
-        pass
-    
+        if self.selected:
+            row, col = self.selected
+            cell = self.cells[row][col]
+            if cell.value == 0:
+                cell.set_value(value)
+                self.update_board()
+
     def reset_to_original(self):
         for r in range(self.rows):
             for c in range(self.cols):
@@ -53,4 +58,25 @@ class Board():
         return None
 
     def check_board(self):
-        print("hello world")    
+        # checks rows
+        for row in self.model:
+             if sorted(row) != [1, 2, 3, 4, 5, 6, 7, 8, 9]:
+                 return False
+        
+        # checks columns
+        for c in range(self.COLS):
+            col = [self.model[r][c] for r in range(self.ROWS)]
+            if sorted(col) != list(range(1, 10)):
+                return False
+            for box_row in range(0, 9, 3):
+        
+        # checks 3x3 boxes
+        for box_col in range(0, 9, 3):
+            nums = []
+            for r in range(3):
+                for c in range(3):
+                    nums.append(self.model[box_row + r][box_col + c])
+            if sorted(nums) != list(range(1, 10)):
+                return False
+        
+        return True
