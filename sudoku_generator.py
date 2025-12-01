@@ -56,13 +56,13 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-    nums = list(range(1, self.row_length + 1))
-    random.shuffle(nums)
-    idx = 0
-    for r in range(row_start, row_start + self.box_length):
-        for c in range(col_start, col_start + self.box_length):
-            self.board[r][c] = nums[idx]
-            idx += 1
+        nums = list(range(1, self.row_length + 1))
+        random.shuffle(nums)
+        idx = 0
+        for r in range(row_start, row_start + self.box_length):
+            for c in range(col_start, col_start + self.box_length):
+                self.board[r][c] = nums[idx]
+                idx += 1
 
     
     '''
@@ -73,8 +73,8 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_diagonal(self):
-    for i in range(0, self.row_length, self.box_length):
-        self.fill_box(i, i)
+        for i in range(0, self.row_length, self.box_length):
+            self.fill_box(i, i)
 
 
     '''
@@ -143,13 +143,13 @@ class SudokuGenerator:
 	Return: None
     '''
     def remove_cells(self):
-    cells_removed = 0
-    while cells_removed < self.removed_cells:
-        row = random.randrange(0, self.row_length)
-        col = random.randrange(0, self.row_length)
-        if self.board[row][col] != 0:
-            self.board[row][col] = 0
-            cells_removed += 1
+        cells_removed = 0
+        while cells_removed < self.removed_cells:
+            row = random.randrange(0, self.row_length)
+            col = random.randrange(0, self.row_length)
+            if self.board[row][col] != 0:
+                self.board[row][col] = 0
+                cells_removed += 1
 
 
 '''
