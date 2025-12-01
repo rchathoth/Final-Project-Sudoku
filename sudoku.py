@@ -1,17 +1,10 @@
 import pygame as game
-from sudoku_generator import SudokuGenerator
+
+from sudoku_generator import *
 
 def main():
+    generate_sudoku(9, 20)
 
-    game.init()
-    screen = game.display.set_mode((600, 600))
-    game.display.set_caption("Sudoku")
-    running = True
-    while running:
-        for event in game.event.get():
-            if event.type == game.QUIT:
-                running = False
-    game.quit()
 
 
 

@@ -1,8 +1,19 @@
+import pygame
+
 class Board():
     def __init__(self, width, height, screen, difficulty):
-        pass
+        self.width = width
+        self.height = height
+        self.screen = screen
+        self.difficulty = difficulty
+    
     def draw(self):
-        pass
+        hi = self.height / 9
+        wi = self.width / 9
+        for i in range(9):
+            pygame.draw.line(self.screen, "black", (i*wi, 0), (i*wi, self.height) )
+        
+        
 
     def select(self, row, col):
         pass

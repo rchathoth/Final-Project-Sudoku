@@ -1,5 +1,5 @@
-import math
 import random
+import math
 
 """
 This was adapted from a GeeksforGeeks article "Program for Sudoku Generator" by Aarti_Rathi and Ankur Trisal
@@ -44,6 +44,19 @@ class SudokuGenerator:
         if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row, col, num):
             return True
         return False
+        pass
+
+    '''
+    Fills the specified 3x3 box with values
+    For each position, generates a random digit which has not yet been used in the box
+
+	Parameters:
+	row_start and col_start are the starting indices of the box to check
+	i.e. the box is from (row_start, col_start) to (row_start+2, col_start+2)
+    
+	Return: None
+    '''
+
     
     def fill_box(self, row_start, col_start):
         nums = list(range(1, self.row_length + 1))
@@ -123,6 +136,7 @@ class SudokuGenerator:
 '''
 DO NOT CHANGE
 '''
+
 def generate_sudoku(size, removed):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
@@ -130,5 +144,3 @@ def generate_sudoku(size, removed):
     sudoku.remove_cells()
     board = sudoku.get_board()
     return board
-
-
