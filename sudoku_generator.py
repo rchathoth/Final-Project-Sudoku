@@ -44,17 +44,7 @@ class SudokuGenerator:
         if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row, col, num):
             return True
         return False
-
-    '''
-    Fills the specified 3x3 box with values
-    For each position, generates a random digit which has not yet been used in the box
-
-	Parameters:
-	row_start and col_start are the starting indices of the box to check
-	i.e. the box is from (row_start, col_start) to (row_start+2, col_start+2)
-
-	Return: None
-    '''
+    
     def fill_box(self, row_start, col_start):
         nums = list(range(1, self.row_length + 1))
         random.shuffle(nums)
@@ -64,14 +54,6 @@ class SudokuGenerator:
                 self.board[r][c] = nums[idx]
                 idx += 1
 
-    
-    '''
-    Fills the three boxes along the main diagonal of the board
-    These are the boxes which start at (0,0), (3,3), and (6,6)
-
-	Parameters: None
-	Return: None
-    '''
     def fill_diagonal(self):
         for i in range(0, self.row_length, self.box_length):
             self.fill_box(i, i)
@@ -79,15 +61,6 @@ class SudokuGenerator:
 
     '''
     DO NOT CHANGE
-    Provided for students
-    Fills the remaining cells of the board
-    Should be called after the diagonal boxes have been filled
-	
-	Parameters:
-	row, col specify the coordinates of the first empty (0) cell
-
-	Return:
-	boolean (whether or not we could solve the board)
     '''
     def fill_remaining(self, row, col):
         if (col >= self.row_length and row < self.row_length - 1):
@@ -120,11 +93,6 @@ class SudokuGenerator:
 
     '''
     DO NOT CHANGE
-    Provided for students
-    Constructs a solution by calling fill_diagonal and fill_remaining
-
-	Parameters: None
-	Return: None
     '''
     def fill_values(self):
         self.fill_diagonal()
@@ -154,18 +122,6 @@ class SudokuGenerator:
 
 '''
 DO NOT CHANGE
-Provided for students
-Given a number of rows and number of cells to remove, this function:
-1. creates a SudokuGenerator
-2. fills its values and saves this as the solved state
-3. removes the appropriate number of cells
-4. returns the representative 2D Python Lists of the board and solution
-
-Parameters:
-size is the number of rows/columns of the board (9 for this project)
-removed is the number of cells to clear (set to 0)
-
-Return: list[list] (a 2D Python list to represent the board)
 '''
 def generate_sudoku(size, removed):
     sudoku = SudokuGenerator(size, removed)
