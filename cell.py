@@ -8,7 +8,7 @@ class Cell:
         self.col = col
         self.screen = screen
         self.selected = False
-        self.size = 60
+        self.size = 60  # Default, will be updated by Board
 
     def set_cell_value(self, value):
         self.value = value
