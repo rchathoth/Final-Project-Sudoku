@@ -12,8 +12,7 @@ class SudokuGenerator:
         self.row_length = row_length
         self.removed_cells = removed_cells
         self.board = [[0 for col in range(row_length)] for row in range(row_length)]
-        self.box_length = math.sqrt(row_length)
-        return None
+        self.box_length = int(math.sqrt(row_length))
 
     def get_board(self):
         return self.board
@@ -34,17 +33,18 @@ class SudokuGenerator:
         return True
 
     def valid_in_box(self, row_start, col_start, num):
-        for r in range(row_start, row_start + 3):
-            for c in range(col_start, col_start + 3):
+        for r in range(row_start, row_start + self.box_length):
+            for c in range(col_start, col_start + self.box_length):
                 if self.board[r][c] == num:
                     return False
         return True
 
     def is_valid(self, row, col, num):
-        if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row, col, num):
+        row_start = row - row % self.box_length
+        col_start = col - col % self.box_length
+        if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row_start, col_start, num):
             return True
         return False
-        pass
 
     '''
     Fills the specified 3x3 box with values
