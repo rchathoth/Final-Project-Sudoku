@@ -1,4 +1,5 @@
 import pygame as game
+from sudoku_generator import SudokuGenerator
 
 def main():
     game.init()
